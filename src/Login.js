@@ -43,9 +43,8 @@ const Login = (props) => {
             keyboardType={'email-address'}
           />
           <Field placeholder="Password" secureTextEntry={true} />
-          <View
-            style={{alignItems: 'flex-end', width: '88%', paddingRight: 16, marginBottom: 200}}>
-            <Text style={{color: darkGreen, fontWeight: 'bold', fontSize: 16}}>
+          <View style={{alignItems: 'center', width: '88%', paddingRight: 16, marginBottom: 100}}>
+          <Text style={{color: darkGreen, fontWeight: 'bold', fontSize: 16}}>
               Forgot Password ?
             </Text>
           </View>
