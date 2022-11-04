@@ -11,6 +11,8 @@ import Btn from './Btn';
 import Field from './Field';
 import { firebase } from '../config';
 import { AntDesign, Entypo, FontAwesome } from '@expo/vector-icons';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 
 // import { Container } from './styles';
 
@@ -54,11 +56,7 @@ const SignUp = () => {
   };
   return (
     <View
-      style={{
-        alignItems: 'center',
-        flex: 1,
-        width: 380,
-      }}
+      style={styles.container}
     >
       <Text
         style={{
@@ -213,3 +211,12 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
+const styles=StyleSheet.create({
+  container:{
+    alignItems: 'center',
+    flex: 1,
+    width: 380,
+  }
+
+})
