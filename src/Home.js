@@ -1,16 +1,22 @@
-import React from "react";
-import { View, Text, StyleSheet} from 'react-native';
-import Background from "./Background";
+import * as React from 'react';
+import { ScrollView, StatusBar,Text,View } from 'react-native';
+import Swiper from 'react-native-swiper';
+import Background from './Background';
+import Btn from './Btn';
+import { darkGreen, green } from '../components/Constants';
 
 
-const Home = () => {
+
+
+const Home=(props)=>{
     return(
         <Background>
-            <Text style={{color: 'white', fontSize: 64}}> HOLA MUNDO</Text>
+        <View style={{marginHorizontal: 30, marginVertical: 20 }}>
+        <Btn bgColor='white' textColor={darkGreen} btnLabel="SignUp"  Press={() => props.navigation.navigate("SignUp")}/>
+        </View>
         </Background>
-    );
+ 
+    )
 }
-
-const styles = StyleSheet.create({})
 
 export default Home;
