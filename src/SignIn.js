@@ -1,13 +1,14 @@
 import React from 'react';
 import {View, Text, Touchable, TouchableOpacity} from 'react-native';
-import Background from './Background';
+import { darkGreen } from '../components/Constants';
 import Btn from './Btn';
-import {darkGreen} from './Constants';
 import Field from './Field';
 
-const Login = (props) => {
+
+
+const SignIn = (props) => {
   return (
-    <Background>
+    
       <View style={{ alignItems: 'center', width: 400}}>
         <Text
           style={{
@@ -38,7 +39,7 @@ const Login = (props) => {
             }}>
             Login to your account
           </Text>
-          <Field
+         <Field
             placeholder="Email / Username"
             keyboardType={'email-address'}
           />
@@ -57,8 +58,8 @@ const Login = (props) => {
           </View>
         </View>
       </View>
-    </Background>
+   
   );
 };
 
-export default Login;
+export default SignIn;

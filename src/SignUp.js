@@ -10,6 +10,7 @@ import { darkGreen } from '../components/Constants';
 import Btn from './Btn';
 import Field from './Field';
 import { firebase } from '../config';
+import { AntDesign, Entypo, FontAwesome } from '@expo/vector-icons';
 
 // import { Container } from './styles';
 
@@ -57,7 +58,6 @@ const SignUp = () => {
         alignItems: 'center',
         flex: 1,
         width: 380,
-        marginVertical: 80,
       }}
     >
       <Text
@@ -65,7 +65,7 @@ const SignUp = () => {
           color: 'black',
           fontSize: 30,
           fontWeight: 'bold',
-          marginTop: 38,
+          marginTop: 20,
         }}
       >
         Create acount
@@ -97,7 +97,7 @@ const SignUp = () => {
           height: 700,
           width: 400,
           borderTopLeftRadius: 120,
-          paddingTop: 50,
+          paddingTop: 10,
           alignItems: 'center',
         }}
       >
@@ -131,11 +131,43 @@ const SignUp = () => {
             setConfirmPassword(confirmPassword)
           }
         />
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              marginTop: 10,
+            }}
+          >
+            <Text
+              style={{
+                color: '#535353',
+                fontSize: 24,
+                fontWeight: 'bold'
+              }}
+            >
+              Or Join
+            </Text>
+          </View>
+          <View style={{
+            display: 'flex',
+            flexDirection: 'row',
+            width:150,
+            justifyContent: "space-between",
+            marginTop:10
+          
+          }}>
+          <AntDesign.Button name="google" backgroundColor="trw" size={45} color="#535353" onPress={''}/>
+          <FontAwesome.Button name="facebook" backgroundColor="trw" size={45} color="#535353" />
+          <Entypo.Button name="linkedin" backgroundColor="trw" size={45} color="#535353" onPress={''}/>
+          
+        </View>
         <View
           style={{
             display: 'flex',
             flexDirection: 'row',
             width: 300,
+            marginTop:10
           }}
         >
           <Text style={{ color: 'grey', fontSize: 15 }}>
@@ -145,7 +177,6 @@ const SignUp = () => {
             Terms & Conditions
           </Text>
         </View>
-
         <View
           style={{
             display: 'flex',

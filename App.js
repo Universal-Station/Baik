@@ -17,7 +17,7 @@ import {
 import { firebase } from './config';
 import MainTabScreen from './src/MainTabScreen';
 import SignUp from './src/SignUp';
-import Login from './src/Login';
+import SignIn from './src/SignIn';
 
 function LogoTitle() {
   return (
@@ -50,9 +50,9 @@ function App() {
     return (
       <PaperProvider>
         <NavigationContainer>
-          <Drawer.Navigator screenOptions={{ headerShown: false }}>
-            <Drawer.Screen name="Login" component={Login} />
-            <Drawer.Screen name="SignUp" component={SignUp} />
+          <Drawer.Navigator screenOptions={{ headerShown: true }}>
+          <Drawer.Screen name="SignUp" component={SignUp} />
+            <Drawer.Screen name="SignIn" component={SignIn} />
           </Drawer.Navigator>
         </NavigationContainer>
       </PaperProvider>
