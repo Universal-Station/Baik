@@ -1,17 +1,16 @@
 import React from 'react';
 
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {useTheme, Avatar} from 'react-native-paper';
-import {View} from 'react-native-animatable';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { useTheme, Avatar } from 'react-native-paper';
+import { View } from 'react-native-animatable';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-import Home from './Home';
-
+import Home from './HomeScreen';
 
 const HomeStack = createStackNavigator();
 const NotificationStack = createStackNavigator();
@@ -27,7 +26,7 @@ const MainTabScreen = () => (
       options={{
         tabBarLabel: 'Explore',
         tabBarColor: '#d02860',
-        tabBarIcon: ({color}) => (
+        tabBarIcon: ({ color }) => (
           <Icon name="ios-search" color={color} size={26} />
         ),
       }}
@@ -38,7 +37,7 @@ const MainTabScreen = () => (
       options={{
         tabBarLabel: 'Help',
         tabBarColor: '#00bea7',
-        tabBarIcon: ({color}) => (
+        tabBarIcon: ({ color }) => (
           <Icon name="help-circle-outline" color={color} size={26} />
         ),
       }}
@@ -49,7 +48,7 @@ const MainTabScreen = () => (
       options={{
         tabBarLabel: 'Amigos',
         tabBarColor: '#1f65ff',
-        tabBarIcon: ({color}) => (
+        tabBarIcon: ({ color }) => (
           <Icon name="people" color={color} size={26} />
         ),
       }}
@@ -60,19 +59,16 @@ const MainTabScreen = () => (
       options={{
         tabBarLabel: 'Cart',
         tabBarColor: '#694fad',
-        tabBarIcon: ({color}) => (
-          <Icon name="cart" color={color} size={26} />
-        ),
+        tabBarIcon: ({ color }) => <Icon name="cart" color={color} size={26} />,
       }}
     />
-
   </Tab.Navigator>
 );
 
 export default MainTabScreen;
 
-const HomeStackScreen = ({navigation}) => {
-  const {colors} = useTheme();
+const HomeStackScreen = ({ navigation }) => {
+  const { colors } = useTheme();
   return (
     <HomeStack.Navigator
       screenOptions={{
@@ -85,14 +81,15 @@ const HomeStackScreen = ({navigation}) => {
         headerTitleStyle: {
           fontWeight: 'bold',
         },
-      }}>
+      }}
+    >
       <HomeStack.Screen
         name="Home"
         component={Home}
         options={{
           title: 'BaikFinder',
           headerLeft: () => (
-            <View style={{marginLeft: 10}}>
+            <View style={{ marginLeft: 10 }}>
               <Icon.Button
                 name="ios-menu"
                 size={25}
@@ -103,7 +100,7 @@ const HomeStackScreen = ({navigation}) => {
             </View>
           ),
           headerRight: () => (
-            <View style={{flexDirection: 'row', marginRight: 10}}>
+            <View style={{ flexDirection: 'row', marginRight: 10 }}>
               <Icon.Button
                 name="ios-search"
                 size={25}
@@ -112,14 +109,14 @@ const HomeStackScreen = ({navigation}) => {
                 onPress={() => {}}
               />
               <TouchableOpacity
-                style={{paddingHorizontal: 10, marginTop: 5}}
+                style={{ paddingHorizontal: 10, marginTop: 5 }}
                 onPress={() => {
                   navigation.navigate('Profile');
-                }}>
+                }}
+              >
                 <Avatar.Image
                   source={{
-                    uri:
-                      'https://api.adorable.io/avatars/80/abott@adorable.png',
+                    uri: 'https://api.adorable.io/avatars/80/abott@adorable.png',
                   }}
                   size={30}
                 />
@@ -128,13 +125,11 @@ const HomeStackScreen = ({navigation}) => {
           ),
         }}
       />
-
-   
     </HomeStack.Navigator>
   );
 };
 
-const NotificationStackScreen = ({navigation}) => (
+const NotificationStackScreen = ({ navigation }) => (
   <NotificationStack.Navigator
     screenOptions={{
       headerStyle: {
@@ -144,7 +139,8 @@ const NotificationStackScreen = ({navigation}) => (
       headerTitleStyle: {
         fontWeight: 'bold',
       },
-    }}>
+    }}
+  >
     <NotificationStack.Screen
       name="Notifications"
       component={NotificationScreen}
@@ -162,8 +158,8 @@ const NotificationStackScreen = ({navigation}) => (
   </NotificationStack.Navigator>
 );
 
-const ProfileStackScreen = ({navigation}) => {
-  const {colors} = useTheme();
+const ProfileStackScreen = ({ navigation }) => {
+  const { colors } = useTheme();
 
   return (
     <ProfileStack.Navigator
@@ -174,14 +170,15 @@ const ProfileStackScreen = ({navigation}) => {
           elevation: 0, // Android
         },
         headerTintColor: colors.text,
-      }}>
+      }}
+    >
       <ProfileStack.Screen
         name="Profile"
         component={ProfileScreen}
         options={{
           title: '',
           headerLeft: () => (
-            <View style={{marginLeft: 10}}>
+            <View style={{ marginLeft: 10 }}>
               <Icon.Button
                 name="ios-menu"
                 size={25}
@@ -192,7 +189,7 @@ const ProfileStackScreen = ({navigation}) => {
             </View>
           ),
           headerRight: () => (
-            <View style={{marginRight: 10}}>
+            <View style={{ marginRight: 10 }}>
               <MaterialCommunityIcons.Button
                 name="account-edit"
                 size={25}
