@@ -16,7 +16,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 
 // import { Container } from './styles';
 
-const SignUp = () => {
+const SignUp = (props) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [confirmPassword, setConfirmPassword] = React.useState('');
@@ -58,6 +58,7 @@ const SignUp = () => {
     <View
       style={styles.container}
     >
+      <View style={styles.textWrapper}>
       <Text
         style={{
           color: 'black',
@@ -84,7 +85,7 @@ const SignUp = () => {
         >
           Do you have an account? {'\n'}
         </Text>
-        <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
+        <TouchableOpacity onPress={() => props.navigation.navigate('SignIn')}>
           <Text style={{ color: darkGreen, fontWeight: 'bold', fontSize: 16 }}>
             SignIn
           </Text>
@@ -150,7 +151,7 @@ const SignUp = () => {
           <View style={{
             display: 'flex',
             flexDirection: 'row',
-            width:150,
+            width:200,
             justifyContent: "space-between",
             marginTop:10
           
@@ -160,18 +161,21 @@ const SignUp = () => {
           <Entypo.Button name="linkedin" backgroundColor="trw" size={45} color="#535353" onPress={''}/>
           
         </View>
+        <View  >
         <View
           style={{
             display: 'flex',
             flexDirection: 'row',
+            justifyContent:'center',
             width: 300,
-            marginTop:10
+            marginTop:10,
+            
           }}
         >
           <Text style={{ color: 'grey', fontSize: 15 }}>
-            By signing in, you agree to our{' '}
-          </Text>
-          <Text style={{ color: darkGreen, fontWeight: 'bold', fontSize: 16 }}>
+            By signing in, you agree to our {' '}
+          </Text> 
+          <Text style={{ color: darkGreen, fontWeight: 'bold', fontSize: 15}}>
             Terms & Conditions
           </Text>
         </View>
@@ -179,20 +183,19 @@ const SignUp = () => {
           style={{
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'center',
-            paddingRight: 16,
-            marginBottom: 10,
+            justifyContent: 'center'
           }}
         >
-          <Text style={{ color: 'grey', fontSize: 16 }}>and </Text>
-          <Text style={{ color: darkGreen, fontWeight: 'bold', fontSize: 16 }}>
+          <Text style={{ color: 'grey', fontSize: 15}}>and </Text>
+          <Text style={{ color: darkGreen, fontWeight: 'bold', fontSize: 15 }}>
             Privacy Policy
           </Text>
+        </View>
         </View>
         <Btn
           textColor="white"
           bgColor={darkGreen}
-          btnLabel="Signup"
+          btnLabel="SignUp"
           Press={() => {
             registerUser(
               email,
@@ -202,9 +205,10 @@ const SignUp = () => {
               confirmPassword,
               phone
             );
-            props.navigation.navigate('Login');
+            props.navigation.navigate('SignIn');
           }}
         />
+      </View>
       </View>
     </View>
   );
@@ -217,6 +221,11 @@ const styles=StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     width: 380,
+  },
+  textWrapper:{
+    alignItems: 'center',
+    height: hp('70%'), // 70% of height device screen
+    width: wp('80%')   // 80% of width device screen
   }
 
 })

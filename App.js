@@ -50,7 +50,7 @@ function App() {
     return (
       <PaperProvider>
         <NavigationContainer>
-          <Drawer.Navigator screenOptions={{ headerShown: true }}>
+          <Drawer.Navigator screenOptions={{ headerShown: false }}>
           <Drawer.Screen name="SignUp" component={SignUp} />
             <Drawer.Screen name="SignIn" component={SignIn} />
           </Drawer.Navigator>

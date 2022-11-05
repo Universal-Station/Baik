@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, Touchable, TouchableOpacity} from 'react-native';
-import { darkGreen } from '../components/Constants';
+import { darkGreen, graydark } from '../components/Constants';
 import Btn from './Btn';
 import Field from './Field';
 
@@ -9,10 +9,10 @@ import Field from './Field';
 const SignIn = (props) => {
   return (
     
-      <View style={{ alignItems: 'center', width: 400}}>
+      <View style={{ alignItems: 'center', width: 375}}>
         <Text
           style={{
-            color: 'white',
+            color: '#00bea7',
             fontSize: 64,
             fontWeight: 'bold',
             marginVertical: 20,
@@ -20,20 +20,16 @@ const SignIn = (props) => {
         </Text>
         <View
           style={{
-            backgroundColor: 'white',
-            height: 7000,
+            height: 700,
             width: 400,
             borderTopLeftRadius: 130,
-            paddingTop: 100,
+            paddingTop: 0,
             alignItems: 'center',
           }}>
-          <Text style={{fontSize: 40, color: darkGreen, fontWeight: 'bold'}}>
-            Welcome Back
-          </Text>
           <Text
             style={{
-              color: 'grey',
-              fontSize: 19,
+              color: graydark,
+              fontSize: 25,
               fontWeight: 'bold',
               marginBottom: 20,
             }}>
@@ -52,7 +48,7 @@ const SignIn = (props) => {
           <Btn textColor='white' bgColor={darkGreen} btnLabel="Login" Press={() => alert("Logged In")} />
           <View style={{ display: 'flex', flexDirection :'row', justifyContent: "center" }}>
             <Text style={{ fontSize: 16, fontWeight:"bold" }}>Don't have an account ? </Text>
-            <TouchableOpacity onPress={() => props.navigation.navigate("Signup")}>
+            <TouchableOpacity onPress={() => props.navigation.navigate("SignUp")}>
             <Text style={{ color: darkGreen, fontWeight: 'bold', fontSize: 16 }}>Signup</Text>
             </TouchableOpacity>
           </View>
