@@ -12,7 +12,7 @@ const Home=(props)=>{
     return(
         <Background>
         <View style={{marginHorizontal: 30, marginVertical: 20 }}>
-        <Btn bgColor='white' textColor={darkGreen} btnLabel="SignUp"  Press={() => props.navigation.navigate("SignUp")}/>
+       
         </View>
         </Background>
  
