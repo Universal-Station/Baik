@@ -6,7 +6,7 @@ import {
   DarkTheme as NavigationDarkTheme,
 } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import Home from './src/HomeScreen';
+import Home from './src/Home';
 import { SvgUri } from 'react-native-svg';
 import { DrawerContent } from './src/DrawerContent';
 import {
@@ -70,6 +70,7 @@ function App() {
             component={MainTabScreen}
             options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
           />
+           <Drawer.Screen name="Profile" component={Profile} />
         </Drawer.Navigator>
       </NavigationContainer>
     </PaperProvider>

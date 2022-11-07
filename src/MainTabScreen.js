@@ -10,7 +10,7 @@ import { useTheme, Avatar } from 'react-native-paper';
 import { View } from 'react-native-animatable';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-import Home from './HomeScreen';
+import Home from './Home';
 
 const HomeStack = createStackNavigator();
 const NotificationStack = createStackNavigator();
