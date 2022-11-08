@@ -16,9 +16,8 @@ import {
 } from 'react-native-paper';
 import { firebase } from './config';
 import MainTabScreen from './src/MainTabScreen';
-import SignUp from './src/SignUp';
-import SignIn from './src/SignIn';
 import Profile from './src/Profile';
+import RootStackScreen from './src/RootStackScreen';
 
 function LogoTitle() {
   return (
@@ -30,9 +29,35 @@ function LogoTitle() {
   );
 }
 
+
 const Drawer = createDrawerNavigator();
 
 function App() {
+
+  const [isDarkTheme, setIsDarkTheme] = React.useState(false);
+  const CustomDefaultThme ={
+    ...NavigationDefaultTheme,
+    ...PaperDefaultTheme,
+    colors:{
+      ...NavigationDefaultTheme.colors,
+      ...PaperDefaultTheme.colors,
+      background: '#ffffff',
+      text: '#333333'
+    }
+  }
+  const CustomDarkTheme = {
+    ...NavigationDarkTheme,
+    ...PaperDarkTheme,
+    colors: {
+      ...NavigationDarkTheme.colors,
+      ...PaperDarkTheme.colors,
+      background: '#333333',
+      text: '#ffffff'
+    }
+  }
+
+  const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultThme
+
   const [initializing, setInitializing] = React.useState(true);
   const [user, setUser] = React.useState(true);
   const onAuthStateChanged = (user) => {
@@ -49,13 +74,9 @@ function App() {
 
   if (!user) {
     return (
-      <PaperProvider>
-        <NavigationContainer>
-          <Drawer.Navigator screenOptions={{ headerShown: true }}>
-          <Drawer.Screen name="SignUp" component={SignUp} />
-          <Drawer.Screen name="SignIn" component={SignIn} />
-          <Drawer.Screen name="Profile" component={Profile} />
-          </Drawer.Navigator>
+      <PaperProvider theme={theme}>
+        <NavigationContainer theme={theme}>
+          <RootStackScreen/>
         </NavigationContainer>
       </PaperProvider>
     );

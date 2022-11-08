@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   StyleSheet,
+  ScrollView,
 } from 'react-native';
 import { darkGreen } from '../components/Constants';
 import Btn from './Btn';
@@ -16,9 +17,15 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
+import { StatusBar } from 'expo-status-bar';
+import * as Animatable from 'react-native-animatable';
+import { useTheme } from 'react-native-paper';
+
 // import { Container } from './styles';
 
 const SignUp = (props) => {
+  const {colors} = useTheme();
+
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [confirmPassword, setConfirmPassword] = React.useState('');
@@ -68,49 +75,29 @@ const SignUp = (props) => {
   };
   return (
     <View style={styles.container}>
-      <View style={styles.textWrapper}>
-        <Text
-          style={{
-            color: 'black',
-            fontSize: 30,
-            fontWeight: 'bold',
-            marginTop: 20,
-          }}
-        >
-          Create acount
+       <StatusBar backgroundColor='#00bea7' barStyle="light-content"/>
+      <View style={styles.header}>
+        <Text style={styles.text_header}>
+          Create Acount
         </Text>
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            marginTop: 10,
-          }}
-        >
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 16,
-            }}
-          >
+      </View>
+      <Animatable.View
+                    animation="fadeInUpBig"
+                    style={[styles.footer, {
+                        backgroundColor: colors.background
+                    }]}>
+      <View style={styles.link}>
+          <Text style={styles.text_prelink}>
             Do you have an account? {'\n'}
           </Text>
           <TouchableOpacity onPress={() => props.navigation.navigate('SignIn')}>
-            <Text
-              style={{ color: darkGreen, fontWeight: 'bold', fontSize: 16 }}
-            >
+            <Text style={styles.text_link}>
               SignIn
             </Text>
           </TouchableOpacity>
-        </View>
-        <View
-          style={{
-            height: 700,
-            width: 400,
-            borderTopLeftRadius: 120,
-            paddingTop: 10,
-            alignItems: 'center',
-          }}
+      </View>
+      <View
+          style={styles.textinput}
         >
           <Field
             placeholder="First Name"
@@ -142,33 +129,12 @@ const SignUp = (props) => {
               setConfirmPassword(confirmPassword)
             }
           />
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              marginTop: 10,
-            }}
-          >
-            <Text
-              style={{
-                color: '#535353',
-                fontSize: 24,
-                fontWeight: 'bold',
-              }}
-            >
+          <View style={styles.social} >
+            <Text style={styles.join} >
               Or Join
             </Text>
           </View>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              width: 200,
-              justifyContent: 'space-between',
-              marginTop: 10,
-            }}
-          >
+          <View style={styles.social_SignUp} >
             <AntDesign.Button
               name="google"
               backgroundColor="trw"
@@ -181,6 +147,7 @@ const SignUp = (props) => {
               backgroundColor="trw"
               size={45}
               color="#535353"
+              onPress={''}
             />
             <Entypo.Button
               name="linkedin"
@@ -191,35 +158,17 @@ const SignUp = (props) => {
             />
           </View>
           <View>
-            <View
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'center',
-                width: 300,
-                marginTop: 10,
-              }}
-            >
-              <Text style={{ color: 'grey', fontSize: 15 }}>
+            <View style={styles.conditions} >
+              <Text style={styles.text_prelink}>
                 By signing in, you agree to our{' '}
               </Text>
-              <Text
-                style={{ color: darkGreen, fontWeight: 'bold', fontSize: 15 }}
-              >
+              <Text style={styles.text_link} >
                 Terms & Conditions
               </Text>
             </View>
-            <View
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'center',
-              }}
-            >
-              <Text style={{ color: 'grey', fontSize: 15 }}>and </Text>
-              <Text
-                style={{ color: darkGreen, fontWeight: 'bold', fontSize: 15 }}
-              >
+            <View style={styles.conditions} >
+              <Text style={styles.text_prelink}>and </Text>
+              <Text style={styles.text_link} >
                 Privacy Policy
               </Text>
             </View>
@@ -240,8 +189,8 @@ const SignUp = (props) => {
               //props.navigation.navigate('SignIn');
             }}
           />
-        </View>
       </View>
+      </Animatable.View>
     </View>
   );
 };
@@ -249,14 +198,69 @@ const SignUp = (props) => {
 export default SignUp;
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
+  container:{
     flex: 1,
-    width: 380,
-  },
-  textWrapper: {
     alignItems: 'center',
-    height: hp('70%'), // 70% of height device screen
-    width: wp('80%'), // 80% of width device screen
+    width: '100%',
+    height: '100%'
   },
+  header:{
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  text_header:{
+    color: 'black',
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginTop: '20%'
+  },
+  link: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      marginTop: 10,  
+  },
+  textinput:{
+      height: 700,
+      width: 400,
+      borderTopLeftRadius: 120,
+      paddingTop: 10,
+      alignItems: 'center',
+  },
+  text_prelink:{
+      color: 'black',
+      fontSize: 14,
+  },
+  text_link:{
+    color: darkGreen,
+    fontWeight: 'bold',
+    fontSize: 16 
+  },
+  conditions:{
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 5,
+  },
+  social:{
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 10,
+  },
+  social_SignUp:{
+      display: 'flex',
+      flexDirection: 'row',
+      width: 200,
+      justifyContent: 'space-between',
+      marginTop: 5,
+      marginVertical:5
+  },
+  join:{
+      color: '#535353',
+      fontSize: 24,
+      fontWeight: 'bold',
+  }
+
 });
+

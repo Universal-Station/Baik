@@ -11,7 +11,7 @@ export default function Btn({bgColor, btnLabel, textColor, Press}) {
         alignItems: 'center',
         width: 350,
         paddingVertical: 5,
-        marginVertical: 10
+        marginVertical: 20
       }}>
       <Text style={{color: textColor, fontSize: 25, fontWeight: 'bold'}}>
         {btnLabel}
